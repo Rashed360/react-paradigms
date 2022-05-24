@@ -7,7 +7,7 @@ export const postComments = {
 		{
 			id: 11,
 			childPostCount: 4,
-			immidiateChild: 1,
+			immediateChild: 1,
 			postSequence: 1,
 			content: 'I love React.js',
 			parentId: null,
@@ -20,7 +20,7 @@ export const postComments = {
 				{
 					id: 21,
 					childPostCount: 3,
-					immidiateChild: 2,
+					immediateChild: 2,
 					postSequence: 2,
 					content: 'Same, bro..!!',
 					parentId: 11,
@@ -33,7 +33,7 @@ export const postComments = {
 						{
 							id: 32,
 							childPostCount: 1,
-							immidiateChild: 1,
+							immediateChild: 1,
 							postSequence: 3,
 							content: 'Really? Good to know.',
 							parentId: 21,
@@ -46,7 +46,7 @@ export const postComments = {
 								{
 									id: 52,
 									childPostCount: 0,
-									immidiateChild: 0,
+									immediateChild: 0,
 									postSequence: 4,
 									content: 'Yeah! Thank Man!!',
 									parentId: 32,
@@ -62,7 +62,7 @@ export const postComments = {
 						{
 							id: 41,
 							childPostCount: 0,
-							immidiateChild: 0,
+							immediateChild: 0,
 							postSequence: 5,
 							content: "Wow, It's Really Popular",
 							parentId: 21,
@@ -79,8 +79,8 @@ export const postComments = {
 		},
 		{
 			id: 56,
-			childPostCount: 1,
-			immidiateChild: 1,
+			childPostCount: 2,
+			immediateChild: 2,
 			postSequence: 6,
 			content: 'React.js is really cool to work with!',
 			parentId: null,
@@ -93,9 +93,23 @@ export const postComments = {
 				{
 					id: 41,
 					childPostCount: 0,
-					immidiateChild: 0,
+					immediateChild: 0,
 					postSequence: 7,
 					content: 'Hmm, It is!',
+					parentId: 56,
+					author: {
+						id: 132,
+						thumbnailUrl: null,
+						name: 'Motalib Hossain',
+					},
+					replies: [],
+				},
+				{
+					id: 49,
+					childPostCount: 0,
+					immediateChild: 0,
+					postSequence: 8,
+					content: 'What is your favourite feature?',
 					parentId: 56,
 					author: {
 						id: 132,

@@ -2,8 +2,9 @@ import style from 'styles/RecursiveComponent.module.css'
 import styled from 'styled-components'
 
 const RecursiveCard = props => {
-	const { indent, author, content, replies, parentId, childPostCount } = props || {}
+	const { indent, author, content, replies, parentId, childPostCount, immediateChild } = props || {}
 	const { name } = author
+	const height = 25
 
 	const Card = styled.div`
 		position: relative;
@@ -28,10 +29,10 @@ const RecursiveCard = props => {
             &:after {
                 position: absolute;
                 content: '';
-                bottom: -25px;
+                bottom: ${immediateChild > 1 ? -(height + 78 * (childPostCount - 1)) + 'px' : -height + 'px'};
                 left: 8px;
                 width: 2px;
-                height: 25px;
+                height: ${immediateChild > 1 ? height + 78 * (childPostCount - 1) + 'px' : height + 'px'};
                 background: #5c5c5c;
             }
             `}
