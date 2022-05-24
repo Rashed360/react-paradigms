@@ -1,10 +1,13 @@
 import style from 'styles/RecursiveComponent.module.css'
 import styled from 'styled-components'
+import { useState } from 'react'
 
 const RecursiveCard = props => {
+	const [hidden, setHidden] = useState(false)
 	const { indent, author, content, replies, parentId, childPostCount, immediateChild } = props || {}
 	const { name } = author
-	const height = 25
+	const normalX = 25
+	const childX = 78
 
 	const Card = styled.div`
 		position: relative;
@@ -24,27 +27,36 @@ const RecursiveCard = props => {
 			background: #5c5c5c;
 		}
         `}
-		${childPostCount !== 0 &&
+		${!hidden &&
+		childPostCount !== 0 &&
 		`
             &:after {
                 position: absolute;
                 content: '';
-                bottom: ${immediateChild > 1 ? -(height + 78 * (childPostCount - 1)) + 'px' : -height + 'px'};
+                bottom: ${
+									(immediateChild > 1 ? -(normalX + childX * (childPostCount - 1)) : -normalX) + 'px'
+								};
                 left: 8px;
                 width: 2px;
-                height: ${immediateChild > 1 ? height + 78 * (childPostCount - 1) + 'px' : height + 'px'};
+                height: ${(immediateChild > 1 ? normalX + childX * (childPostCount - 1) : normalX) + 'px'};
                 background: #5c5c5c;
             }
             `}
 	`
+	const toggleChildHide = () => {
+		setHidden(!hidden)
+	}
 
 	return (
 		<>
 			<Card>
-				<div className={style.usr}>{name}</div>
-				<div className={style.msg}>{content}</div>
+				<div className={style.usr} onClick={toggleChildHide}>
+					{name}
+				</div>
+				{!hidden && <div className={style.msg}>{content}</div>}
 			</Card>
-			{replies &&
+			{!hidden &&
+				replies &&
 				replies.length > 0 &&
 				replies.map(reply => {
 					return <RecursiveCard {...reply} indent={indent + 1} key={reply.id} />
