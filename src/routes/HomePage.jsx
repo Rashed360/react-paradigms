@@ -1,4 +1,3 @@
-import React from 'react'
 import { Link } from 'react-router-dom'
 
 const HomePage = () => {
@@ -7,6 +6,9 @@ const HomePage = () => {
 			<ul>
 				<li>
 					<Link to='recursive-component'>Recursive Component</Link>
+				</li>
+				<li>
+					<Link to='interval-hook'>Set Interval &amp; Hooks</Link>
 				</li>
 			</ul>
 		</div>
